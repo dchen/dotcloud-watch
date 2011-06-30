@@ -1,0 +1,22 @@
+#!/bin/bash
+
+ME=`basename $0`
+
+if [ "$1" == "" ]; then
+  echo "usage: $ME <app name>"
+  exit 1
+fi
+
+echo "$ME: Startup. Pushing..."
+dotcloud push $1
+
+OLD_LS=`ls -Rl`
+while true; do
+  NEW_LS=`ls -Rl`
+  if [ "$OLD_LS" != "$NEW_LS" ]; then
+    echo "$ME: Change detected. Pushing..."
+    dotcloud push $1
+    OLD_LS="$NEW_LS"
+    sleep 1
+fi
+done

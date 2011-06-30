@@ -3,7 +3,8 @@ dotcloud-watch
 
 This script watches for changes in the current directory and does a push to
 DotCloud for the named app upon any change. It's a quick script that hasn't
-really been tested.
+really been tested. It really only works if you don't use a version control
+system in its current implementation.
 
 Setup
 -----
